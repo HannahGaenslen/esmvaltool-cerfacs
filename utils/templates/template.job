@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#SBATCH -J esmvaltool_onESGF
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=6
+#SBATCH --mail-user=gaenslen@cerfacs.fr
+#SBATCH --mail-type=END
+
+module purge
+module load tools/singularity
+
+# esmvaltool v.2.8.0
+cmd='singularity run -B /archive -B /data/scratch /data/softs/local/singularity/images/esmvaltool28.sif'
+

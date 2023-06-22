@@ -1,0 +1,191 @@
+###############################################################################
+# Developer's configuration file for the ESMValTool
+###############################################################################
+# This file retains the project- and machine-dependent directory and file name
+# definitions of the input and output data
+# Each dictionary is structured as follows
+#
+# PROJECT:
+#   input_dir:
+#     default:
+#     drs1:
+#     drs2:
+#     etc:
+#   input_file:
+#   output_file:
+#
+# Only the default drs is mandatory, the others are optional
+###############################################################################
+---
+EPOC:
+  cmor_strict: true
+  input_dir:
+    CERFACS: '{project}/{model}/{simu}'
+  input_file: '{short_name}_{mip}_{dataset}_{exp}_{ensemble}_{grid}*.nc'
+  output_file: '{project}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}_{grid}'
+  cmor_type: 'CMIP6'
+
+TRIATLAS:
+  cmor_strict: true
+  input_dir:
+    default: '/'
+    CERFACS: '{project}/{institute}/{dataset}/{exp}/s{startdate}/{dataset}_{exp}_s{startdate}-{ensemble}'
+  input_file: '{short_name}_{mip}_{dataset}_{exp}_s{startdate}-{ensemble}*.nc'
+  output_file: '{project}_{dataset}_{mip}_{exp}_s{startdate}-{ensemble}_{short_name}'
+  cmor_type: 'CMIP6'
+
+CMIP6:
+  cmor_strict: true
+  input_dir:
+    #default: '/'
+    CERFACS: '{project}/{activity}/{institute}/{dataset}/{exp}/{ensemble}/{mip}/{short_name}/{grid}/{latestversion}'
+    CNRM: 'michou/{group}/{simu}'
+    BADC: '{activity}/{institute}/{dataset}/{exp}/{ensemble}/{mip}/{short_name}/{grid}/{latestversion}'
+    DKRZ: '{activity}/{institute}/{dataset}/{exp}/{ensemble}/{mip}/{short_name}/{grid}/{latestversion}'
+    ESGF: '{project}/{activity}/{institute}/{dataset}/{exp}/{ensemble}/{mip}/{short_name}/{grid}/{latestversion}'
+    ETHZ: '{exp}/{mip}/{short_name}/{dataset}/{ensemble}/{grid}/'
+    SYNDA: '{activity}/{institute}/{dataset}/{exp}/{ensemble}/{mip}/{short_name}/{grid}/{latestversion}'
+  input_file: '{short_name}_{mip}_{dataset}_{exp}_{ensemble}_{grid}*.nc'
+  output_file: '{project}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}_{grid}'
+   ### default: '{project}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}_{grid}'
+   ### CNRM: '{group}_{simu}_{project}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}_{grid}'
+  cmor_type: 'CMIP6'
+
+CMIP5:
+  cmor_strict: true
+  input_dir:
+    default: '/'
+    BADC: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{mip}/{ensemble}/{latestversion}/{short_name}'
+    BSC: '{type}/{project}/{exp}/{dataset.lower}'
+    CP4CDS: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{mip}/{ensemble}/{short_name}/latest/'
+    DKRZ: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{mip}/{ensemble}/{latestversion}/{short_name}'
+    ETHZ: '{exp}/{mip}/{short_name}/{dataset}/{ensemble}/'
+    ESGF: '{project.lower}/{product}/{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{mip}/{ensemble}/{latestversion}'
+    RCAST: '{exp}/{mip}/{short_name}/{dataset}/{ensemble}/'
+    SMHI: '{dataset}/{ensemble}/{exp}/{frequency}'
+    SYNDA: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{mip}/{ensemble}/{latestversion}'
+  input_file: '{short_name}_{mip}_{dataset}_{exp}_{ensemble}*.nc'
+  output_file: '{project}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}'
+
+CMIP3:
+  cmor_strict: true
+  input_dir:
+    default: '/'
+    BADC: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{short_name}/{ensemble}/{latestversion}'
+    DKRZ: '{exp}/{modeling_realm}/{frequency}/{short_name}/{dataset}/{ensemble}'
+    ESGF: '{project.lower}/{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{ensemble}/{short_name}/{latestversion}'
+    IPSL: '{institute}/{dataset}/{exp}/{frequency}/{modeling_realm}/{ensemble}/{short_name}/{version}/{short_name}'
+  input_file: '{short_name}_*.nc'
+  output_file: '{project}_{institute}_{dataset}_{mip}_{exp}_{ensemble}_{short_name}'
+  cmor_type: 'CMIP3'
+
+OBS:
+  cmor_strict: false
+  input_dir:
+    default: 'Tier{tier}/{dataset}'
+    BSC: '{type}/{institute.lower}/{dataset.lower}/{freq_folder}/{short_name}{freq_base}'
+    RCAST: '{dataset}'
+  input_file:
+    default: '{project}_{dataset}_{type}_{version}_{mip}_{short_name}[_.]*nc'
+    BSC: '{short_name}_*.nc'
+    RCAST: '{short_name}_{mip}_{type}_{dataset}_*.nc'
+  output_file:
+    default:  '{project}_{dataset}_{type}_{version}_{mip}_{short_name}'
+  cmor_type: 'CMIP5'
+
+OBS6:
+  cmor_strict: false
+  input_dir:
+    default: 'Tier{tier}/{dataset}'
+    BSC: '{type}/{institute.lower}/{dataset.lower}/{freq_folder}/{short_name}{freq_base}'
+  input_file:
+    default: '{project}_{dataset}_{type}_{version}_{mip}_{short_name}[_.]*nc'
+    BSC: '{short_name}_*.nc'
+  output_file: '{project}_{dataset}_{type}_{version}_{mip}_{short_name}'
+  cmor_type: 'CMIP6'
+
+###custom:
+###  cmor_strict: false
+###  input_dir:
+###    ESACCI: '{dataset}'
+###  input_file:
+###    ESACCI: '*.nc'
+###  output_file: '{project}_{dataset}_{type}_{version}_{mip}_{short_name}'
+###  cmor_path: '~/.esmvaltool/custom_tables/ESACCI' 
+
+native6:
+  cmor_strict: false
+  input_dir:
+    default: 'Tier{tier}/{dataset}/{latestversion}/{frequency}/{short_name}'
+  input_file:
+    default: '*.nc'
+  output_file: '{project}_{dataset}_{type}_{version}_{mip}_{short_name}'
+  cmor_type: 'CMIP6'
+  cmor_default_table_prefix: 'CMIP6_'
+
+obs4MIPs:
+  cmor_strict: false
+  input_dir:
+    default: 'Tier{tier}/{dataset}'
+    ESGF: '{project}/{dataset}/{latestversion}'
+    CERFACS: '{project}/{dataset}/{latestversion}'
+    RCAST: '/'
+    IPSL: '{realm}/{short_name}/{freq}/{grid}/{institute}/{dataset}/{latest_version}'
+  input_file:
+    default: '{short_name}_{dataset}_{level}_{version}_*.nc'
+    CERFACS: '{short_name}_{dataset}_{level}_{version}_*.nc'
+    ESGF: '{short_name}_{dataset}*.nc'
+  output_file: '{project}_{dataset}_{short_name}'
+  cmor_type: 'CMIP6'
+  cmor_path: 'obs4mips'
+  cmor_default_table_prefix: 'obs4MIPs_'
+
+ana4mips:
+  cmor_strict: false
+  input_dir:
+    default: 'Tier{tier}/{dataset}'
+    RCAST: '/'
+  input_file: '{short_name}_{mip}_{type}_{dataset}_*.nc'
+  output_file: '{project}_{mip}_{type}_{dataset}_{short_name}'
+  cmor_type: 'CMIP5'
+  # TODO: add cmor_path and table and set cmor_strict to true
+
+EMAC:
+  input_dir:
+    default: '{dataset}'
+  input_file: ''
+  output_file: '{dataset}_{ensemble}_{short_name}'
+  cmor_type: 'CMIP5'
+
+CORDEX:
+  input_dir:
+    default: '/'
+    spec: '{domain}/{institute}/{driver}/{exp}/{ensemble}/{dataset}/{rcm_version}/{mip}/{short_name}'
+    BADC: '{domain}/{institute}/{driver}/{exp}/{ensemble}/{dataset}/{rcm_version}/{mip}/{short_name}/{latestversion}'
+    ESGF: '{project.lower}/output/{domain}/{institute}/{driver}/{exp}/{ensemble}/{dataset}/{rcm_version}/{frequency}/{short_name}/{latestversion}'
+  input_file: '{short_name}_{domain}_{driver}_{exp}_{ensemble}_{dataset}_{rcm_version}_{mip}*.nc'
+  output_file: '{project}_{dataset}_{rcm_version}_{driver}_{domain}_{mip}_{exp}_{ensemble}_{short_name}'
+  cmor_type: 'CMIP5'
+  cmor_path: 'cordex'
+
+IPSLCM:
+  cmor_strict: false
+  input_dir:
+    default: '{root}/{account}/{model}/{status}/{exp}/{simulation}/{dir}/{out}/{freq}'
+  input_file:
+    default:
+      - '{simulation}_*_{ipsl_varname}.nc'
+      - '{simulation}_*_{group}.nc'
+  output_file: '{dataset}_{account}_{model}_{status}_{exp}_{simulation}_{freq}_{short_name}'
+  cmor_type: 'CMIP6'
+  cmor_default_table_prefix: 'CMIP6_'
+
+ICON:
+  cmor_strict: false
+  input_dir:
+    default: '{version}_{component}_{exp}_{grid}_{ensemble}'
+  input_file:
+    default: '{version}_{component}_{exp}_{grid}_{ensemble}_{var_type}*.nc'
+  output_file: '{dataset}_{version}_{component}_{grid}_{mip}_{exp}_{ensemble}_{short_name}_{var_type}'
+  cmor_type: 'CMIP6'
+  cmor_default_table_prefix: 'CMIP6_'
