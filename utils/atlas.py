@@ -39,7 +39,7 @@ def parse_args():
     parser = ArgumentParser()
     parser.description = "creates an ESMValTool atlas"
     parser.add_argument("DIRECTORY", nargs="*",
-                        help="path to the output directory")
+                        help="path to the output directory as definied initially in config-user.yml")
     op = parser.parse_args()
     options = vars(op)
    
