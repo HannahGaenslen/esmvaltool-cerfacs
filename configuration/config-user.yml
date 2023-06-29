@@ -102,7 +102,7 @@ rootpath:
   CMIP5: [/data/scratch/globc/gaenslen/workdir/esmvaltool/download_data/cmip5]
   EPOC: /data/scratch/globc/valcke
   TRIATLAS: /data/scratch/globc/dcom
-  OBS6: [/data/scratch/globc/gaenslen/workdir/esmvaltool/cmorized_data, /archive/globc/moine/workdir/esmvaltool/cmorized_data]
+  OBS6: [/data/scratch/globc/gaenslen/workdir/esmvaltool/cmorized_data]
   OBS: /data/scratch/globc/gaenslen/workdir/esmvaltool/cmorized_data
   ###custom: /archive/globc/gaenslen/workdir/esmvaltool/manual_download_obs
   RAWOBS: /data/scratch/globc/gaenslen/workdir/esmvaltool/download_data/RAWOBS
