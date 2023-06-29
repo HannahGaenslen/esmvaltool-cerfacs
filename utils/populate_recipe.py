@@ -29,7 +29,7 @@ dataset = {
     'project': 'CMIP6', 
     'dataset': 'CNRM-ESM2-1', 
     'exp': 'historical', 
-    'ensemble': 'r(1:5)i1p1f2', 
+    'ensemble': 'r1i1p1f2', 
     'grid': 'gr'
 }
         
@@ -103,7 +103,7 @@ def new_output_dir(dataset):
 def job_file(recipes, path, jobfile_path, search_ESGF, output_dir):
     '''write sbatch job file'''
 
-    with open('template.job', 'r') as file:
+    with open('templates/template.job', 'r') as file:
         template = file.read()
         file.close
     
